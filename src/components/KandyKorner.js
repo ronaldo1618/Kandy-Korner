@@ -3,23 +3,23 @@ import NavBar from './nav/NavBar';
 import ApplicationViews from './ApplicationViews';
 
 const KandyKorner = () => {
-  const isAuthenticated = () => sessionStorage.getItem('credentials') !== null;
-  const [hasUser, setHasUser] = useState(isAuthenticated());
+  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  const [hasEmployee, setHasEmployee] = useState(isAuthenticated());
 
-  const clearUser = () => {
+  const clearEmployee = () => {
     sessionStorage.clear();
-    setHasUser(isAuthenticated());
+    setHasEmployee(isAuthenticated());
   }
 
-  const setUser = user => {
-    sessionStorage.setItem('credentials', JSON.stringify(user));
-    setHasUser(isAuthenticated());
+  const setEmployee = employee => {
+    sessionStorage.setItem("credentials", JSON.stringify(employee));
+    setHasEmployee(isAuthenticated());
   }
 
   return (
     <>
-      <NavBar hasUser={hasUser} clearUser={clearUser}/>
-      <ApplicationViews hasUser={hasUser} setUser={setUser}/>
+      <NavBar hasEmployee={hasEmployee} clearEmployee={clearEmployee}/>
+      <ApplicationViews hasEmployee={hasEmployee} setEmployee={setEmployee}/>
     </>
   )
 }
