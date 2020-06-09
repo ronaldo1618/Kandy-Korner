@@ -6,6 +6,7 @@ const EmployeeList = props => {
   const [employees, setEmployees] = useState([]);
 
   const getEmployees = () => {
+    console.log(props.employeeId)
     return DataManager.get("employees").then(employeesFromAPI => { setEmployees(employeesFromAPI)});
   };
 
@@ -13,11 +14,16 @@ const EmployeeList = props => {
     getEmployees();
   }, []);
 
+  const deleteObj = id => {
+    DataManager.delete(id)
+      .then(() => DataManager.get("employees").then(setEmployees));
+  };
+
   return (
     <div>
       <div>
         {
-          employees.map(employee => <EmployeeCard key={employee.id} obj={employee} objURL={"employees"} history={props.history} {...props}/>)
+          employees.map(employee => <EmployeeCard key={employee.id} obj={employee} employeeId={props.employeeId} deleteObj={deleteObj} objURL={"employees"} history={props.history} {...props}/>)
         }
       </div>
     </div>

@@ -49,5 +49,10 @@ export default {
   },
   getEmployeeByIdWithLocation(employeeId) {
     return fetch(`${remoteURL}/employees/${employeeId}?_expand=location`).then(data => data.json())
+  },
+  delete(id) {
+    return fetch(`${remoteURL}/employees/${id}`, {
+      method: 'DELETE'
+    }).then(data => data.json());
   }
 }
