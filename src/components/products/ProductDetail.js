@@ -43,7 +43,7 @@ const ProductDetail = (props) => {
           <p>{location.location.phone}</p>
           </div>
         )}
-        <button type="submit" onClick={() => props.history.push(`/productForm/${props.match.params.productId}`)}>Edit</button>
+        <button type="submit" onClick={() => props.history.push(`/products/productForm/${props.match.params.productId}`)}>Edit</button>
       </div>
     </div>
   );

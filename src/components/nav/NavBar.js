@@ -8,9 +8,9 @@ const NavBar = props => {
     props.history.push('/products');
   }
   return (
-    <header>
-    { props.hasEmployee ? 
     <>
+    { props.hasEmployee ? 
+    <header>
       <h1>
         Kandy Korner
       </h1>
@@ -18,7 +18,7 @@ const NavBar = props => {
         <ul>
           {props.hasEmployee
           ? <li>
-              <Link className="nav-link" to="/">Products</Link>
+              <Link className="nav-link" to="/products">Products</Link>
             </li>
           : null
           }
@@ -50,10 +50,10 @@ const NavBar = props => {
             </li>
           }
         </ul>
-      </nav>
-    </> 
-    : null }
+      </nav> 
     </header>
+    : null}
+    </>
   )
 }
 

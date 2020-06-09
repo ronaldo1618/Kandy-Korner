@@ -55,7 +55,7 @@ const ProductForm = props => {
         })
       }
     }
-    props.history.push("/")           
+    props.history.push("/products")           
   }
 
   const createNewProduct = e => {

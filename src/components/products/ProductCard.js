@@ -7,7 +7,7 @@ const ProductCard = ({product, objURL, history}) => {
     <p>{product.price}</p>
     <p>{product.productType.name}</p>
     <button type="button" onClick={() => {
-      history.push(`/${product.id}/details`)
+      history.push(`/products/${product.id}/details`)
     }}>Details</button>
     </>
   )

@@ -19,6 +19,10 @@ const ApplicationViews = props => {
       }}
       />
       <Route exact path='/' render={props => {
+        return <Login setEmployee={setEmployee} {...props}/>
+      }}
+      />
+      <Route exact path='/products' render={props => {
         if(hasEmployee) {
           return <ProductList employeeId={employeeId} {...props}/>
         } else {
@@ -26,7 +30,7 @@ const ApplicationViews = props => {
         }
       }}
       />
-      <Route path="/:productId(\d+)/details" render={props => {
+      <Route path="/products/:productId(\d+)/details" render={props => {
         if(hasEmployee) {
           return <ProductDetail {...props}/>
         } else {
@@ -34,7 +38,7 @@ const ApplicationViews = props => {
         }
       }}
       />
-      <Route exact path="/productForm/:productId(\d+)" render={
+      <Route exact path="/products/productForm/:productId(\d+)" render={
         props => {
           if(hasEmployee) {
             return <ProductForm {...props}/>
@@ -43,7 +47,7 @@ const ApplicationViews = props => {
           }
         }}
       />
-      <Route exact path="/productForm" render={
+      <Route exact path="/products/productForm" render={
         props => {
           if(hasEmployee) {
             return <ProductForm {...props}/>

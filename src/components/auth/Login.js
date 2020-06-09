@@ -30,9 +30,9 @@ const Login = props => {
       <fieldset>
         <h3>Please Sign In</h3>
         <div className="formgrid">
-          <input onChange={handleFieldChange} type="username" id="username" placeholder="Username"/>
+          <input required onChange={handleFieldChange} type="username" id="username" placeholder="Username"/>
           <label htmlFor="inputUsername">Username</label>
-          <input onChange={handleFieldChange} type="password" id="password" placeholder="Password"/>
+          <input required onChange={handleFieldChange} type="password" id="password" placeholder="Password"/>
           <label htmlFor="inputPassword">Password</label>
         </div>
         <button type="submit">Sign In</button>

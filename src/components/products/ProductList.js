@@ -18,7 +18,7 @@ const ProductList = (props) => {
   return (
     <>
       <section className="section-content">
-        <button type="button" className="btn" onClick={() => {props.history.push(`/productForm`)}}>Add Product</button>
+        <button type="button" className="btn" onClick={() => {props.history.push(`/products/productForm`)}}>Add Product</button>
       </section>
       <div className="container-cards">
         {products.map(product => <ProductCard key={product.id} product={product} objURL={"product"} history={props.history} {...props}/>)}

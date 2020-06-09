@@ -47,6 +47,12 @@
       "name": "Chocolate Tux",
       "price": "3.89",
       "productTypeId": 1
+    },
+    {
+      "id": 9,
+      "name": "foo",
+      "price": "isd",
+      "productTypeId": 3
     }
   ],
   "productTypes": [
@@ -226,6 +232,16 @@
       "productId": 2,
       "locationId": 2,
       "id": 21
+    },
+    {
+      "productId": 9,
+      "locationId": 1,
+      "id": 22
+    },
+    {
+      "productId": 9,
+      "locationId": 2,
+      "id": 23
     }
   ]
 }
