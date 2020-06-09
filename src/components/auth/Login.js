@@ -14,11 +14,10 @@ const Login = props => {
     e.preventDefault();
     DataManager.getEmployees()
       .then(employees => {
-        const employee = employees.find(employee => employee.username === credentials.username)
-        if(!employee) return alert('employee does not exist')
+        const employee = employees.find(employee => employee.username === credentials.username && employee.password === credentials.password)
+        if(!employee) return alert('employee not found')
         const stateToChange = { ...credentials }
         stateToChange.employeeId = employee.id
-        console.log(employee)
         setCredentials(stateToChange)
         props.setEmployee(employee)
         props.history.push('/')

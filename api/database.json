@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Pink Gummy Bears",
       "price": "3.99",
-      "productTypeId": 2
+      "productTypeId": 1
     },
     {
       "id": 2,
@@ -44,7 +44,7 @@
     },
     {
       "id": 8,
-      "name": "Chocolate Tux",
+      "name": "Chocolate Tuxedo",
       "price": "3.89",
       "productTypeId": 1
     },
@@ -53,6 +53,18 @@
       "name": "foo",
       "price": "isd",
       "productTypeId": 3
+    },
+    {
+      "id": 10,
+      "name": "new one noew",
+      "price": "300",
+      "productTypeId": 2
+    },
+    {
+      "name": "sad",
+      "price": "0djn",
+      "productTypeId": 1,
+      "id": 11
     }
   ],
   "productTypes": [
@@ -242,6 +254,21 @@
       "productId": 9,
       "locationId": 2,
       "id": 23
+    },
+    {
+      "productId": 10,
+      "locationId": 3,
+      "id": 24
+    },
+    {
+      "productId": 10,
+      "locationId": 1,
+      "id": 25
+    },
+    {
+      "productId": 11,
+      "locationId": 1,
+      "id": 26
     }
   ]
 }

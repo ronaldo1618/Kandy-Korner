@@ -9,6 +9,10 @@ export default {
     return fetch(`${remoteURL}/products/?_expand=productType`)
       .then(data => data.json())
   },
+  getProductsWithType(id) {
+    return fetch(`${remoteURL}/productTypes/${id}?_embed=products`)
+      .then(data => data.json());
+  },
   getById(collection, id) {
     return fetch(`${remoteURL}/${collection}/${id}`)
       .then(data => data.json());
@@ -42,5 +46,8 @@ export default {
   fetchProductLocations() {
     return fetch(`${remoteURL}/productLocations`)
       .then(data => data.json());
+  },
+  getEmployeeByIdWithLocation(employeeId) {
+    return fetch(`${remoteURL}/employees/${employeeId}?_expand=location`).then(data => data.json())
   }
 }

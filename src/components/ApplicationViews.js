@@ -4,6 +4,9 @@ import Login from './auth/Login';
 import ProductList from './products/ProductList';
 import ProductDetail from './products/ProductDetail';
 import ProductForm from './products/ProductForm';
+import LocationList from './locations/LocationList';
+import EmployeeList from './employees/EmployeeList';
+import EmployeeDetail from './employees/EmployeeDetail';
 
 const ApplicationViews = props => {
   const hasEmployee = props.hasEmployee;
@@ -19,7 +22,11 @@ const ApplicationViews = props => {
       }}
       />
       <Route exact path='/' render={props => {
-        return <Login setEmployee={setEmployee} {...props}/>
+        if(hasEmployee) {
+          return <ProductList setEmployee={setEmployee} {...props}/>
+        } else {
+          return <Redirect to="/Login"/>
+        }
       }}
       />
       <Route exact path='/products' render={props => {
@@ -55,6 +62,32 @@ const ApplicationViews = props => {
             return <Redirect to="/Login"/>
           }
         }}
+      />
+      <Route exact path="/locations" render={
+        props => {
+          if(hasEmployee) {
+            return <LocationList {...props}/>
+          } else {
+            return <Redirect to="/Login"/>
+          }
+        }}
+      />
+      <Route exact path="/employees" render={
+        props => {
+          if(hasEmployee) {
+            return <EmployeeList {...props}/>
+          } else {
+            return <Redirect to="/Login"/>
+          }
+        }}
+      />
+      <Route path="/employees/:employeeId(\d+)/details" render={props => {
+        if(hasEmployee) {
+          return <EmployeeDetail {...props}/>
+        } else {
+          return <Redirect to="/Login"/>
+        }
+      }}
       />
     </>
   )

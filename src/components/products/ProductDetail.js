@@ -7,23 +7,19 @@ const ProductDetail = (props) => {
   const [productLocations, setProductLocations] = useState([]);
 
   useEffect(() => {
-    console.log(props)
     DataManager.getById("products", props.match.params.productId)
     .then(product => {
       setProduct({
         name: product.name,
         price: product.price,
       });
-      console.log(product)
       return DataManager.getById("productTypes", product.productTypeId)
     })
     .then(productType => {
       setProductType({name: productType.name})
-      console.log(props.match.params.productId)
       return DataManager.getProductLocations(props.match.params.productId)
     })
     .then(productLocations => {
-      console.log(productLocations)
       setProductLocations(productLocations)
     })
   }, [props.match.params.productId]);

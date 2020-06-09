@@ -6,7 +6,6 @@ const ProductForm = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [productTypes, setProductTypes] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
-  const [newProductId, setNewProductId] = useState(0);
   const locations = [{ name: 'Kandy Korner Kidz', id: 1 }, { name: 'Kandy Korner', id: 2 }, { name: 'Kandy Korner West Side', id: 3 }];
 
   const getType = () => {
@@ -99,6 +98,7 @@ const ProductForm = props => {
             />
             <label htmlFor="productTypeId">Product Type</label>
             <select className="form-control" id="productTypeId" value={product.Id} onChange={handleFieldChange}>
+              <option className="hide-option" value=''></option>
               {productTypes.map(productType => 
               <option key={productType.id} value={productType.id}>{productType.name}</option>
               )}
@@ -115,6 +115,7 @@ const ProductForm = props => {
           </div>
           </div>
           <div className="alignRight">
+          <button type="button" onClick={() => props.history.push('/products')}>Cancel</button>
           {
             props.match.params.productId ?
             <button
