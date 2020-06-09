@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataManager from '../../modules/DataManager';
 import ProductCard from '../products/ProductCard';
+import { Button, Container, Row, Col, Jumbotron } from 'react-bootstrap';
 
 const ProductList = (props) => {
   const [products, setProducts] = useState([]);
@@ -32,23 +33,27 @@ const ProductList = (props) => {
   };
 
   return (
-    <>
-      <label htmlFor="productTypeId">Product Type</label>
+    <div>
+      <Container className="mt-5 mb-5 d-flex justify-content-center">
+
+        <Row>
+          <Col style={{width: '13rem'}}>
             <select className="form-control" id="productTypeId" value={productTypes.Id} onChange={handleFieldChange}>
-              <option className="hide-option" value=''></option>
+              <option className="hide-option" value=''>Product Type</option>
               {productTypes.map(productType => 
               <option key={productType.id} value={productType.id}>{productType.name}</option>
               )}
             </select>
-      <section className="section-content">
-      {}
-        <button type="button" className="btn" onClick={() => {props.history.push(`/products/productForm`)}}>Add Product</button>
-      </section>
+          </Col>
+          <Col>
+            <Button type="button" className="btn" onClick={() => {props.history.push(`/products/productForm`)}}>Add Product</Button>
+          </Col>
+        </Row>
+      </Container>
       <div className="container-cards">
         {products.map(product => <ProductCard key={product.id} product={product} objURL={"product"} history={props.history} {...props}/>)}
       </div>
-      
-    </>
+    </div>
   );
 };
 

@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.hide-option {
+  display: none;
+}
+
+.product-name {
+  font-size: 3rem;
+}
+
+.product-price {
+  color: green;
+}
+
+#checkbox-locations {
+  display: flex;
+  justify-content: center;
+}

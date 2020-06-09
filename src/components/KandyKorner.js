@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from './nav/NavBar';
+import NavigationBar from './nav/NavBar';
 import ApplicationViews from './ApplicationViews';
 
 const KandyKorner = () => {
@@ -18,7 +18,7 @@ const KandyKorner = () => {
 
   return (
     <>
-      <NavBar hasEmployee={hasEmployee} clearEmployee={clearEmployee}/>
+      <NavigationBar hasEmployee={hasEmployee} clearEmployee={clearEmployee}/>
       <ApplicationViews hasEmployee={hasEmployee} setEmployee={setEmployee}/>
     </>
   )

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Pink Gummy Bears",
-      "price": "3.99",
+      "price": "4.00",
       "productTypeId": 2
     },
     {
@@ -47,6 +47,12 @@
       "name": "Chocolate Tuxedo",
       "price": "3.89",
       "productTypeId": 1
+    },
+    {
+      "name": "new one",
+      "price": "idk",
+      "productTypeId": 1,
+      "id": 9
     }
   ],
   "productTypes": [
@@ -236,6 +242,11 @@
       "productId": 1,
       "locationId": 3,
       "id": 32
+    },
+    {
+      "productId": 9,
+      "locationId": 1,
+      "id": 33
     }
   ]
 }

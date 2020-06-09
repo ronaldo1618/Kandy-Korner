@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import DataManager from '../../modules/DataManager';
 import EmployeeCard from './EmployeeCard';
+import { Container } from 'react-bootstrap';
 
 const EmployeeList = props => {
   const [employees, setEmployees] = useState([]);
 
   const getEmployees = () => {
     console.log(props.employeeId)
-    return DataManager.get("employees").then(employeesFromAPI => { setEmployees(employeesFromAPI)});
+    return DataManager.get("employees").then(employeesFromAPI => setEmployees(employeesFromAPI));
   };
 
   useEffect(() => {
     getEmployees();
-  }, []);
+  }, [props.match.params.employeeId]);
 
   const deleteObj = id => {
     DataManager.delete("employees", id)
@@ -21,7 +22,7 @@ const EmployeeList = props => {
 
   return (
     <div>
-      <div>
+      <div className="container-cards">
         {
           employees.map(employee => <EmployeeCard key={employee.id} obj={employee} employeeId={props.employeeId} deleteObj={deleteObj} objURL={"employees"} history={props.history} {...props}/>)
         }

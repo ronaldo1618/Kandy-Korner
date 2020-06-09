@@ -83,7 +83,7 @@ const ApplicationViews = props => {
       />
       <Route path="/employees/:employeeId(\d+)/details" render={props => {
         if(hasEmployee) {
-          return <EmployeeDetail {...props}/>
+          return <EmployeeDetail employeeId={employeeId} {...props}/>
         } else {
           return <Redirect to="/Login"/>
         }

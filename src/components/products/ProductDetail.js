@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DataManager from '../../modules/DataManager';
+import { Container, Jumbotron, Button } from 'react-bootstrap';
 
 const ProductDetail = (props) => {
   const [product, setProduct] = useState({});
@@ -34,25 +35,27 @@ const ProductDetail = (props) => {
   };
 
   return (
-    <div className="card">
-      <div className="card-content">
-        <h3>
-          Name: <span style={{ color: "darkslategrey" }}>{product.name}</span>
+    <Container className="mt-4 text-center d-flex justify-content-center">
+      <Jumbotron style={{width: '30rem'}}>
+        <h3 className="product-name">{product.name}
         </h3>
-        <p>Price: {product.price}</p>
-        <p>Product Type: {productType.name || "not assigned"}</p>
-        <p>Product Locations: </p>{productLocations.map(location => 
+        <p className="product-price">Price: ${ product.price}</p>
+        <p className="product-type">Product Type: {productType.name || "not assigned"}</p>
+        <p className="product-locations">Product Locations</p>
+        <hr/>
+        {productLocations.map(location => 
           <div key={location.location.id}>
           <p>{location.location.name}</p>
           <p>{location.location.address}</p>
           <p>{location.location.phone}</p>
-          <button type="button" onClick={() => deleteLocation(location.id)}>Out of Stock</button>
+          <Button variant="outline-danger" className="m-3" type="button" onClick={() => deleteLocation(location.id)}>Out of Stock</Button>
+          <hr/>
           </div>
         )}
-        <button type="submit" onClick={() => props.history.push(`/products/productForm/${props.match.params.productId}`)}>Edit</button>
-        <button type="button" onClick={() => deleteProduct(props.match.params.productId)}>Remove Product</button>
-      </div>
-    </div>
+        <Button className="m-3" type="submit" onClick={() => props.history.push(`/products/productForm/${props.match.params.productId}`)}>Edit</Button>
+        <Button variant="danger" className="m-3" type="button" onClick={() => deleteProduct(props.match.params.productId)}>Remove Product</Button>
+      </Jumbotron>
+    </Container>
   );
 };
 export default ProductDetail;

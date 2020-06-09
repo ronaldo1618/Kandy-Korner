@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataManager from '../../modules/DataManager';
+import { Form, Jumbotron, Container, Button } from 'react-bootstrap';
 
 const ProductForm = props => {
   const [product, setProduct] = useState({name: "", price: 0, productTypeId: ""})
@@ -86,15 +87,17 @@ const ProductForm = props => {
   }, [props.match.params.productId]);
 
   return (
-    <>
-      <form>
-        <fieldset>
-          <div className="formgrid">
-            <label htmlFor="name">Product name</label>
-            <input type="text" required className="form-control" onChange={handleFieldChange} id="name" value={product.name}
+    <Container className="p-5">
+      <Jumbotron>
+        <Form>
+          <Form.Group>
+            <Form.Label htmlFor="name">Product name</Form.Label>
+            <Form.Control type="text" required className="form-control" onChange={handleFieldChange} id="name" value={product.name}
             />
-            <label htmlFor="price">Price</label>
-            <input
+            </Form.Group>
+            <Form.Group>
+            <Form.Label htmlFor="price">Price</Form.Label>
+            <Form.Control
               type="text"
               required
               className="form-control"
@@ -102,43 +105,46 @@ const ProductForm = props => {
               id="price"
               value={product.price}
             />
-            <label htmlFor="productTypeId">Product Type</label>
+          </Form.Group>
+          <Form.Group>
             <select className="form-control" id="productTypeId" value={product.Id} onChange={handleFieldChange}>
-              <option className="hide-option" value=''></option>
+              <option className="hide-option" value=''>Product Type</option>
               {productTypes.map(productType => 
               <option key={productType.id} value={productType.id}>{productType.name}</option>
               )}
             </select>
-            <div>
-              {
-                locations.map(location => (
-                  <label key={location.id}>
-                      {location.name}
-                      <input type="checkbox" id={location.id} name={location.name} checked={checkedItems[location.name]} onChange={e => setCheckedItems({...checkedItems, [e.target.id] : e.target.checked})} />
-                  </label>
-                ))
-              }
-          </div>
-          </div>
-          <div className="alignRight">
-          <button type="button" onClick={() => props.history.push('/products')}>Cancel</button>
-          {
-            props.match.params.productId ?
-            <button
-              type="button" disabled={isLoading}
-              onClick={updateProduct}
-              className="btn btn-primary"
-            >Submit</button>
-            : <button
-              type="button" disabled={isLoading}
-              onClick={createNewProduct}
-              className="btn btn-primary"
-            >Submit</button>
-          }
-          </div>
-        </fieldset>
-      </form>
-    </>
+          </Form.Group>
+          <hr/>
+          <Form.Group id="checkbox-locations" className="d-flex text-center">
+            {
+            locations.map(location => (
+              <Form.Label className="m-3" key={location.id}>
+                <Form.Check type="checkbox" id={location.id} name={location.name} checked={checkedItems[location.name]} onChange={e => setCheckedItems({...checkedItems, [e.target.id] : e.target.checked})} />
+                {location.name}
+              </Form.Label>
+            ))
+            }
+          </Form.Group>
+          <hr/>
+          <Container className="text-center">
+            <Button className="mr-3" variant="danger" type="button" onClick={() => props.history.push('/products')}>Cancel</Button>
+            {
+              props.match.params.productId ?
+              <Button
+                type="button" disabled={isLoading}
+                onClick={updateProduct}
+                className="btn btn-primary"
+              >Submit</Button>
+              : <Button
+                type="button" disabled={isLoading}
+                onClick={createNewProduct}
+                className="btn btn-primary"
+              >Submit</Button>
+            }
+          </Container>
+        </Form>
+      </Jumbotron>
+    </Container>
   );
 }
 

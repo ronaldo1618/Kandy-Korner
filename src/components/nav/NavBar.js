@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
-const NavBar = props => {
+const NavigationBar = props => {
   const handleLogout = () => {
     props.clearEmployee();
     props.history.push('/products');
@@ -10,45 +10,41 @@ const NavBar = props => {
   return (
     <>
     { props.hasEmployee ? 
-    <header>
-      <h1>
-        Kandy Korner
-      </h1>
-      <nav>
-        <ul>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="/products">Kandy Korner</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+      <Navbar.Collapse id="responsive-navbar-nav">
+
+      <Nav className="mr-auto">
           {props.hasEmployee
-          ? <li>
-              <Link className="nav-link" to="/products">Products</Link>
-            </li>
-          : null
-          }
-          {props.hasEmployee
-          ? <li>
-              <Link className="nav-link" to="/employees">Employees</Link>
-            </li>
-          : null
-          }
-          {props.hasEmployee
-          ? <li>
-              <Link className="nav-link" to="/locations">Locations</Link>
-            </li>
+          ?
+            <Nav.Link className="nav-link" href="/products">Products</Nav.Link>
           : null
           }
           {props.hasEmployee
           ? 
-            <li>
-              <span className="nav-link" onClick={handleLogout}>Logout</span>
-            </li>
-          : <li>
-              <Link className="nav-link" to="/login">Login</Link>
-            </li>
+            <Nav.Link className="nav-link" href="/employees">Employees</Nav.Link>
+          : null
           }
-        </ul>
-      </nav> 
-    </header>
+          {props.hasEmployee
+          ?
+            <Nav.Link className="nav-link" href="/locations">Locations</Nav.Link>
+          : null
+          }
+      </Nav>
+      <Nav>
+          {props.hasEmployee
+          ? 
+            <Nav.Link className="nav-link" onClick={handleLogout}>Logout</Nav.Link>
+          :
+            <Nav.Link className="nav-link" href="/login">Login</Nav.Link>
+          }
+      </Nav>
+      </Navbar.Collapse>
+    </Navbar>
     : null}
     </>
   )
 }
 
-export default withRouter(NavBar);
+export default withRouter(NavigationBar);
