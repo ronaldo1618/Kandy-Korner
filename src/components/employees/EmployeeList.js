@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataManager from '../../modules/DataManager';
 import EmployeeCard from './EmployeeCard';
-import { Container } from 'react-bootstrap';
 
 const EmployeeList = props => {
   const [employees, setEmployees] = useState([]);

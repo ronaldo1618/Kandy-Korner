@@ -26,7 +26,7 @@ const Login = props => {
   }
 
   return (
-    <Container fluid="md" className="p-5">
+    <Container className="w-50 p-5">
       <Jumbotron>
         <Form onSubmit={handleLogin}>
             <h3 className="display-4">Kandy Korner </h3>
@@ -34,11 +34,11 @@ const Login = props => {
             <hr/>
             <FormGroup>
               <Form.Label htmlFor="inputUsername">Username</Form.Label>
-              <Form.Control required onChange={handleFieldChange} type="username" id="username" placeholder="Username"/>
+              <Form.Control className="w-100" required onChange={handleFieldChange} type="username" id="username" placeholder="Username"/>
             </FormGroup>
             <FormGroup>
               <Form.Label htmlFor="inputPassword">Password</Form.Label>
-              <Form.Control required onChange={handleFieldChange} type="password" id="password" placeholder="Password"/>
+              <Form.Control className="w-100" required onChange={handleFieldChange} type="password" id="password" placeholder="Password"/>
             </FormGroup>
             <Button type="submit">Sign In</Button>
         </Form>

@@ -15,7 +15,7 @@ const LocationList = props => {
 
   return (
     <div>
-      <div>
+      <div className="container-cards">
         {
           locations.map(location => <LocationCard key={location.id} obj={location} objURL={"locations"} history={props.history} {...props}/>)
         }

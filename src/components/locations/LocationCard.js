@@ -1,12 +1,15 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 
 const LocationCard = ({obj, objURL, history}) => {
   return (
-    <>
-      <h3>{obj.name}</h3>
-      <p>{obj.phone}</p>
-      <p>{obj.address}</p>
-    </>
+    <Card className="text-center m-2" style={{width: `18rem`}}>
+      <Card.Body>
+        <Card.Title>{obj.name}</Card.Title>
+        <Card.Text>{obj.phone}</Card.Text>
+        <Card.Text>{obj.address}</Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 
