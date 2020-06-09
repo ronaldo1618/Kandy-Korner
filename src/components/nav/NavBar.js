@@ -35,12 +35,6 @@ const NavBar = props => {
           : null
           }
           {props.hasEmployee
-          ? <li>
-              <Link className="nav-link" to="/productTypes">Product Types</Link>
-            </li>
-          : null
-          }
-          {props.hasEmployee
           ? 
             <li>
               <span className="nav-link" onClick={handleLogout}>Logout</span>

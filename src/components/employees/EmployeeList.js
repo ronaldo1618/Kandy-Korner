@@ -15,7 +15,7 @@ const EmployeeList = props => {
   }, []);
 
   const deleteObj = id => {
-    DataManager.delete(id)
+    DataManager.delete("employees", id)
       .then(() => DataManager.get("employees").then(setEmployees));
   };
 

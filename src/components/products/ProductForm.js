@@ -6,15 +6,21 @@ const ProductForm = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [productTypes, setProductTypes] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
-  const locations = [{ name: 'Kandy Korner Kidz', id: 1 }, { name: 'Kandy Korner', id: 2 }, { name: 'Kandy Korner West Side', id: 3 }];
+  const [locations, setLocations] = useState([])
 
   const getType = () => {
     DataManager.get("productTypes")
       .then(productTypes => setProductTypes(productTypes));
     };
 
+  const getLocations = () => {
+    DataManager.get("locations")
+      .then(locations => setLocations(locations))
+  }
+
   useEffect(() => {
     getType()
+    getLocations()
   }, []);
 
   const handleFieldChange = e => {
@@ -43,11 +49,11 @@ const ProductForm = props => {
       productId = newProduct.id
     }
     // find a better solution for this
-    for (let i = 0; i <= 3; i++) { 
+    for (let i = 0; i <= locations.length; i++) { 
       if(checkedItems[i] === true) {
-        DataManager.fetchProductLocations().then((productLocations) => {
+        DataManager.get("productLocations").then((productLocations) => {
           const check = productLocations.find(existingProductLocation => existingProductLocation.productId === productId && existingProductLocation.locationId === i)
-          if(!check) DataManager.postProductLocation("productLocations", {
+          if(!check) DataManager.post("productLocations", {
             productId: productId,
             locationId: i
           })
@@ -64,7 +70,7 @@ const ProductForm = props => {
     } else {
       setIsLoading(true);
       product.productTypeId = parseInt(product.productTypeId)
-      DataManager.postProductLocation("products", product)
+      DataManager.post("products", product)
         .then(newProduct => updateProductLocations(newProduct))
     }
   }

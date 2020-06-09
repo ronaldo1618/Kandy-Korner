@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Pink Gummy Bears",
       "price": "3.99",
-      "productTypeId": 1
+      "productTypeId": 2
     },
     {
       "id": 2,
@@ -40,31 +40,13 @@
       "id": 7,
       "name": "Candy Broccoli",
       "price": "2.99",
-      "productTypeId": 3
+      "productTypeId": 2
     },
     {
       "id": 8,
       "name": "Chocolate Tuxedo",
       "price": "3.89",
       "productTypeId": 1
-    },
-    {
-      "id": 9,
-      "name": "foo",
-      "price": "isd",
-      "productTypeId": 3
-    },
-    {
-      "id": 10,
-      "name": "new one noew",
-      "price": "300",
-      "productTypeId": 2
-    },
-    {
-      "name": "sad",
-      "price": "0djn",
-      "productTypeId": 1,
-      "id": 11
     }
   ],
   "productTypes": [
@@ -149,11 +131,6 @@
       "id": 1,
       "productId": 1,
       "locationId": 2
-    },
-    {
-      "id": 2,
-      "productId": 1,
-      "locationId": 1
     },
     {
       "id": 3,
@@ -246,29 +223,19 @@
       "id": 21
     },
     {
-      "productId": 9,
-      "locationId": 1,
-      "id": 22
-    },
-    {
-      "productId": 9,
+      "productId": 7,
       "locationId": 2,
-      "id": 23
+      "id": 27
     },
     {
-      "productId": 10,
+      "productId": 7,
       "locationId": 3,
-      "id": 24
+      "id": 28
     },
     {
-      "productId": 10,
-      "locationId": 1,
-      "id": 25
-    },
-    {
-      "productId": 11,
-      "locationId": 1,
-      "id": 26
+      "productId": 1,
+      "locationId": 3,
+      "id": 32
     }
   ]
 }

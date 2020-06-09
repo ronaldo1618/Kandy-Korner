@@ -1,24 +1,8 @@
 const remoteURL = 'http://localhost:5002'
 
 export default {
-  getEmployees() {
-    return fetch(`${remoteURL}/employees`)
-      .then(data => data.json());
-  },
-  getAllProductsWithType() {
-    return fetch(`${remoteURL}/products/?_expand=productType`)
-      .then(data => data.json())
-  },
-  getProductsWithType(id) {
-    return fetch(`${remoteURL}/productTypes/${id}?_embed=products`)
-      .then(data => data.json());
-  },
   getById(collection, id) {
     return fetch(`${remoteURL}/${collection}/${id}`)
-      .then(data => data.json());
-  },
-  getProductLocations(productId) {
-    return fetch(`${remoteURL}/productLocations/?productId=${productId}&_expand=location`)
       .then(data => data.json());
   },
   get(collection) {
@@ -34,7 +18,7 @@ export default {
       body: JSON.stringify(obj)
     }).then(data => data.json())
   },
-  postProductLocation(collection, obj) {
+  post(collection, obj) {
     return fetch(`${remoteURL}/${collection}`, {
       method: 'POST',
       headers: {
@@ -43,16 +27,24 @@ export default {
       body: JSON.stringify(obj)
     }).then(data => data.json())
   },
-  fetchProductLocations() {
-    return fetch(`${remoteURL}/productLocations`)
-      .then(data => data.json());
+  delete(collection, id) {
+    return fetch(`${remoteURL}/${collection}/${id}`, {
+      method: 'DELETE'
+    }).then(data => data.json());
   },
   getEmployeeByIdWithLocation(employeeId) {
     return fetch(`${remoteURL}/employees/${employeeId}?_expand=location`).then(data => data.json())
   },
-  delete(id) {
-    return fetch(`${remoteURL}/employees/${id}`, {
-      method: 'DELETE'
-    }).then(data => data.json());
-  }
+  getAllProductsWithType() {
+    return fetch(`${remoteURL}/products/?_expand=productType`)
+      .then(data => data.json())
+  },
+  getProductsWithType(id) {
+    return fetch(`${remoteURL}/productTypes/${id}?_embed=products`)
+      .then(data => data.json());
+  },
+  getProductLocations(productId) {
+    return fetch(`${remoteURL}/productLocations/?productId=${productId}&_expand=location`)
+    .then(data => data.json());
+  },
 }
