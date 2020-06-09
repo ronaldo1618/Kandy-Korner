@@ -15,18 +15,13 @@ const ProductList = (props) => {
     getProducts();
   }, []);
 
-  const deleteProduct = id => {
-    DataManager.delete("products", id)
-    .then(() => DataManager.getAllProductsWithType().then(setProducts));
-  };
-
   return (
     <>
       <section className="section-content">
-        <button type="button" className="btn" onClick={() => {props.history.push("./form")}}>Add Product</button>
+        <button type="button" className="btn" onClick={() => {props.history.push(`/productForm`)}}>Add Product</button>
       </section>
       <div className="container-cards">
-        {products.map(product => <ProductCard key={product.id} product={product} objURL={"product"} deleteObj={deleteProduct} history={props.history} {...props}/>)}
+        {products.map(product => <ProductCard key={product.id} product={product} objURL={"product"} history={props.history} {...props}/>)}
       </div>
     </>
   );

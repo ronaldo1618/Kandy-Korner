@@ -20,5 +20,27 @@ export default {
   get(collection) {
     return fetch(`${remoteURL}/${collection}`)
       .then(data => data.json());
+  },
+  update(collection, obj) {
+    return fetch(`${remoteURL}/${collection}/${obj.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    }).then(data => data.json())
+  },
+  postProductLocation(collection, obj) {
+    return fetch(`${remoteURL}/${collection}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    }).then(data => data.json())
+  },
+  fetchProductLocations() {
+    return fetch(`${remoteURL}/productLocations`)
+      .then(data => data.json());
   }
 }

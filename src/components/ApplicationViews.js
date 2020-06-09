@@ -34,7 +34,16 @@ const ApplicationViews = props => {
         }
       }}
       />
-      <Route path="/productForm/:productId(\d+)" render={
+      <Route exact path="/productForm/:productId(\d+)" render={
+        props => {
+          if(hasEmployee) {
+            return <ProductForm {...props}/>
+          } else {
+            return <Redirect to="/Login"/>
+          }
+        }}
+      />
+      <Route exact path="/productForm" render={
         props => {
           if(hasEmployee) {
             return <ProductForm {...props}/>
